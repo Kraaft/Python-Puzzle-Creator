@@ -54,7 +54,7 @@ while True:
 
     node = game
 
-    game_id = game.headers["Site"].split('/')[-1:][0]
+    game_id = game.headers["Event"]
     logging.debug(bcolors.WARNING + "Game ID: " + game_id + bcolors.ENDC)
 
     prev_score = chess.uci.Score(None, None)
