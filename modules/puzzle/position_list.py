@@ -80,9 +80,12 @@ class position_list:
         move1 = self.engine.info_handlers[0].info["pv"].get(1)[0]
         score1 = self.engine.info_handlers[0].info["score"].get(1)
         self.analysed_legals.append(analysed(move1, score1))
-        move2 = self.engine.info_handlers[0].info["pv"].get(2)[0]
-        score2 = self.engine.info_handlers[0].info["score"].get(2)
-        self.analysed_legals.append(analysed(move2, score2))
+		try:
+			move2 = self.engine.info_handlers[0].info["pv"].get(2)[0]
+			score2 = self.engine.info_handlers[0].info["score"].get(2)
+			self.analysed_legals.append(analysed(move2, score2))
+		except:
+			logging.debug(bcolors.FAIL + "Only one legal move." + bcolors.ENDC)
 
         for i in self.analysed_legals:
             logging.debug(bcolors.OKGREEN + "Move: " + str(i.move.uci()) + bcolors.ENDC)
